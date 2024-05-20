@@ -1,0 +1,104 @@
+﻿@model Login_Signup_page.Models.Employee
+@{
+    ViewData["Title"] = "Employee_update";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-lg-5">
+
+        <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5">
+
+            @*<div class="text-center">
+            <a class="text-light btn btn-primary font-weight-bold" asp-action="Employee_get" asp-controller="Account">Employee get</a>
+            <h1 class="text-info">User Registration Form</h1>
+
+            </div>*@
+            <div class="text-center">
+                <h6 class="text-success text-center">@TempData["sucessMessage"]</h6>
+                <h6 class="text-success text-center">@TempData["errorMessage"]</h6>
+            </div>
+            <form method="post" asp-action="Employee_update">
+                <div class="form-group">
+                    <label asp-for="Employee_id"></label>
+                    <input type="text" asp-for="Employee_id" placeholder="Employee id" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee_name"></label>
+                    <input type="text" asp-for="Employee_name" placeholder="Employee Name" class="form-control" autocomplete="off" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Employee_email"></label>
+                    <input id="Password" type="text" asp-for="Employee_email" placeholder="Email" class="form-control" autocomplete="off" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee_phone"></label>
+                    <input type="text" asp-for="Employee_phone" placeholder="Phone Number" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee_salary"></label>
+                    <input type="text" asp-for="Employee_salary" placeholder="Employee Salary" class="form-control" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee_status"></label>
+                    <input type="text" asp-for="Employee_status" placeholder="Employee Status" class="form-control" autocomplete="off" />
+                </div>
+                </br>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg mb-1 float-right" value="Update" />
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+@*<div>
+    <div class="text-center">
+        <h6 class="text-success text-center">@TempData["sucessMessage"]</h6>
+        <h6 class="text-success text-center">@TempData["errorMessage"]</h6>
+    </div>
+    <form>
+        <div>
+            <label asp-for="Employee_id">Employe ID</label>
+            <input type="number" asp-for="Employee_id" placeholder="Employee Id" class="form-control" />
+        </div>
+        </br>
+        <div>
+            <input type="submit" class="btn btn-success btn-lg mb-1 float-right" onclick="Delete" value="Delete" />
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+
+    function delete()
+    {
+        var Employee_id = $.trim($("#Employee_id").val());
+        alert(Employee_id)
+        $ajax({
+            url: '@Url.Action("Employee_delete", "Employee")',
+            data: { Employee_id: Employee_id },
+        }).done(function (res) {
+            alert(res)
+            if (res.value == "invalid_id")
+                alert('Unable to add detail!');
+        
+        }).then((res) => {
+            // Code to run when the user clicks the "OK" button
+            if (res.isConfirmed) {
+                alert(res)
+                // Redirect the page
+                // window.location.href = 'Url.Action("m_state_list", "Master")';
+                location.reload();
+            }
+        });
+    }
+
+</script>*@
